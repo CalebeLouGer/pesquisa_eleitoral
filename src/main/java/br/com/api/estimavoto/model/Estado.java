@@ -1,14 +1,12 @@
-package br.com.api.estimavoto.domain.estado;
+package br.com.api.estimavoto.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Table(name = "estados")
+@Table(name = "estado")
 @Entity(name = "Estado")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")

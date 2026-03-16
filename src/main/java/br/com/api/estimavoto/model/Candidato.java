@@ -1,18 +1,20 @@
-package br.com.api.estimavoto.domain.cadidato;
+package br.com.api.estimavoto.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Table(name = "municipios")
-@Entity(name = "Municipio")
+@Table(name = "candidato")
+@Entity(name = "Candidato")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Candidato {
 
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nome;
 }

@@ -1,4 +1,4 @@
-package br.com.api.estimavoto.domain.municipio;
+package br.com.api.estimavoto.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,19 +6,17 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Table(name = "municipios")
-@Entity(name = "Municipio")
+import java.time.LocalDate;
+
+@Table(name = "pesquisa")
+@Entity(name = "Pesquisa")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Municipio {
+public class Pesquisa {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String nome;
-    private String populacao;
-    private Grupo grupo;
-    private String estado_id;
+    private LocalDate data;
 }
