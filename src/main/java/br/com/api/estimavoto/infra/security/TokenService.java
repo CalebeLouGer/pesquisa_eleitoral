@@ -1,6 +1,6 @@
 package br.com.api.estimavoto.infra.security;
 
-import br.com.api.estimavoto.model.Usuario;
+import br.com.api.estimavoto.domain.usuario.Usuario;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;

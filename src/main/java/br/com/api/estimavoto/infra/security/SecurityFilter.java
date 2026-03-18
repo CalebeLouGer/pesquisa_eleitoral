@@ -1,6 +1,6 @@
 package br.com.api.estimavoto.infra.security;
 
-import br.com.api.estimavoto.repository.UsuarioRepository;
+import br.com.api.estimavoto.domain.usuario.UsuarioRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

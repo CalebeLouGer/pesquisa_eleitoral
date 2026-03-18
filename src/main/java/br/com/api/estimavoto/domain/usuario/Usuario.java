@@ -1,4 +1,4 @@
-package br.com.api.estimavoto.model;
+package br.com.api.estimavoto.domain.usuario;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

@@ -1,9 +1,9 @@
 package br.com.api.estimavoto.controller;
 
-import br.com.api.estimavoto.infra.authentication.DadosAuthentication;
+import br.com.api.estimavoto.domain.usuario.DadosAuthentication;
 import br.com.api.estimavoto.infra.security.DadosTokenJWT;
 import br.com.api.estimavoto.infra.security.TokenService;
-import br.com.api.estimavoto.model.Usuario;
+import br.com.api.estimavoto.domain.usuario.Usuario;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

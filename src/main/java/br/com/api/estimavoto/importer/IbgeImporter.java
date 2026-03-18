@@ -1,9 +1,9 @@
 package br.com.api.estimavoto.importer;
 
-import br.com.api.estimavoto.model.Estado;
-import br.com.api.estimavoto.model.Municipio;
-import br.com.api.estimavoto.repository.EstadoRepository;
-import br.com.api.estimavoto.repository.MunicipioRepository;
+import br.com.api.estimavoto.domain.estado.Estado;
+import br.com.api.estimavoto.domain.municipio.Municipio;
+import br.com.api.estimavoto.domain.estado.EstadoRepository;
+import br.com.api.estimavoto.domain.municipio.MunicipioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -64,9 +64,14 @@ public class IbgeImporter {
 
             municipio.setNome(nomeMunicipio);
             municipio.setEstado(estado);
+            municipio.setPopulacao(gerarPopulacaoFake());
 
             municipioRepository.save(municipio);
         }
 
     }
+    private Long gerarPopulacaoFake() {
+        return (long) (Math.random() * 1_500_000);
+    }
+
 }

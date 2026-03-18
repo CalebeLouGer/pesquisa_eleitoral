@@ -1,6 +1,5 @@
-package br.com.api.estimavoto.repository;
+package br.com.api.estimavoto.domain.estado;
 
-import br.com.api.estimavoto.model.Estado;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

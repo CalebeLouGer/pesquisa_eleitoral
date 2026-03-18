@@ -1,4 +1,4 @@
-package br.com.api.estimavoto.infra.authentication;
+package br.com.api.estimavoto.domain.usuario;
 
 public record DadosAuthentication(String login, String senha) {
 }

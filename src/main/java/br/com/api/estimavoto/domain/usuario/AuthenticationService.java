@@ -1,6 +1,5 @@
-package br.com.api.estimavoto.infra.authentication;
+package br.com.api.estimavoto.domain.usuario;
 
-import br.com.api.estimavoto.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

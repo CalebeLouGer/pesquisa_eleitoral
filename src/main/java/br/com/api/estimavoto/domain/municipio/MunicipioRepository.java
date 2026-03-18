@@ -1,6 +1,5 @@
-package br.com.api.estimavoto.repository;
+package br.com.api.estimavoto.domain.municipio;
 
-import br.com.api.estimavoto.model.Municipio;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MunicipioRepository extends JpaRepository<Municipio, Long> {

@@ -1,9 +1,12 @@
-package br.com.api.estimavoto.model;
+package br.com.api.estimavoto.domain.estado;
 
+import br.com.api.estimavoto.domain.municipio.Municipio;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Table(name = "estado")
+import java.util.List;
+
+@Table(name = "estados")
 @Entity(name = "Estado")
 @Getter
 @Setter
@@ -17,5 +20,8 @@ public class Estado {
 
     private String nome;
     private String sigla;
+
+    @OneToMany(mappedBy = "estado")
+    private List<Municipio> municipios;
 
 }

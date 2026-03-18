@@ -1,6 +1,5 @@
-package br.com.api.estimavoto.repository;
+package br.com.api.estimavoto.domain.usuario;
 
-import br.com.api.estimavoto.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 

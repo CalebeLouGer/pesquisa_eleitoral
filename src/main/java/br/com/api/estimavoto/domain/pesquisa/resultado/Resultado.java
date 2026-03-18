@@ -1,18 +1,19 @@
-package br.com.api.estimavoto.model;
+package br.com.api.estimavoto.domain.pesquisa.resultado;
 
+import br.com.api.estimavoto.domain.candidato.Candidato;
+import br.com.api.estimavoto.domain.pesquisa.Pesquisa;
+import br.com.api.estimavoto.domain.municipio.Municipio;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Table(name = "entrevista")
-@Entity(name = "Entrevista")
+@Table(name = "resultados")
+@Entity(name = "Resultado")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Entrevista {
+public class Resultado {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,5 +29,7 @@ public class Entrevista {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "candidato_id", nullable = false)
     private Candidato candidato;
+
+    private Long quantidadeVoto;
 
 }
