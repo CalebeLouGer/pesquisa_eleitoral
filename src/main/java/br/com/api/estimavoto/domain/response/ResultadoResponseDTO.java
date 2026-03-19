@@ -1,5 +1,7 @@
 package br.com.api.estimavoto.domain.response;
 
+import br.com.api.estimavoto.domain.municipio.grupo.Grupo;
+
 import java.time.LocalDate;
 
 public record ResultadoResponseDTO(
@@ -8,6 +10,7 @@ public record ResultadoResponseDTO(
         String municipio,
         String estado,
         Long candidato,
-        Integer quantidadeDeVotos
+        Integer quantidadeDeVotos,
+        Grupo grupo
 ) {
 }

@@ -48,7 +48,8 @@ public class PesquisaService {
                                 p.getMunicipio().getNome(),
                                 p.getEstado().getNome(),
                                 p.getCandidato().getId(),
-                                p.getQuantidadeDeVotos()
+                                p.getQuantidadeDeVotos(),
+                                p.getMunicipio().getGrupo()
                         ))
                         .toList();
 

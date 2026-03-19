@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS municipios (
     id BIGSERIAL PRIMARY KEY,
     nome VARCHAR(150) NOT NULL,
     populacao BIGINT,
-    grupo INTEGER,
+    grupo VARCHAR(50),
     estado_id BIGSERIAL NOT NULL,
 
     CONSTRAINT fk_estado

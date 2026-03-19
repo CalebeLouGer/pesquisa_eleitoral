@@ -38,28 +38,30 @@ public class IbgeImporter {
 
         List<Map<String,Object>> municipios = response.getBody();
 
-        for(Map<String,Object> municipioJson : municipios){
-
+        for (Map<String, Object> municipioJson : municipios) {
             String nomeMunicipio = (String) municipioJson.get("nome");
 
             Map microrregiao = (Map) municipioJson.get("microrregiao");
-            Map mesorregiao = (Map) microrregiao.get("mesorregiao");
-            Map uf = (Map) mesorregiao.get("UF");
+            Map mesorregiao = microrregiao != null ? (Map) microrregiao.get("mesorregiao") : null;
+            Map uf = mesorregiao != null ? (Map) mesorregiao.get("UF") : null;
 
-            String nomeEstado = (String) uf.get("nome");
-            String sigla = (String) uf.get("sigla");
+            String nomeEstado = uf != null ? (String) uf.get("nome") : null;
+            String sigla = uf != null ? (String) uf.get("sigla") : null;
+
+            if (sigla == null) {
+                System.out.println("Município ignorado (sem UF): " + nomeMunicipio);
+                continue;
+            }
 
             Estado estado = estadoRepository
                     .findBySigla(sigla)
                     .orElseGet(() -> {
-
                         Estado novo = new Estado();
                         novo.setNome(nomeEstado);
                         novo.setSigla(sigla);
 
                         return estadoRepository.save(novo);
                     });
-
             Municipio municipio = new Municipio();
 
             municipio.setNome(nomeMunicipio);
@@ -68,10 +70,9 @@ public class IbgeImporter {
 
             municipioRepository.save(municipio);
         }
-
     }
     private Long gerarPopulacaoFake() {
-        return (long) (Math.random() * 1_500_000);
+        return (long) (Math.random() * 1500000);
     }
 
 }
