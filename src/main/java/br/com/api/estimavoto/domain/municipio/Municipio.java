@@ -1,11 +1,8 @@
 package br.com.api.estimavoto.domain.municipio;
 
 import br.com.api.estimavoto.domain.estado.Estado;
-import br.com.api.estimavoto.domain.pesquisa.resultado.Resultado;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.List;
 
 @Table(name = "municipios")
 @Entity(name = "Municipio")
@@ -25,8 +22,4 @@ public class Municipio {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "estado_id", nullable = false)
     private Estado estado;
-
-    @OneToMany(mappedBy = "municipio")
-    private List<Resultado> resultados;
-
 }

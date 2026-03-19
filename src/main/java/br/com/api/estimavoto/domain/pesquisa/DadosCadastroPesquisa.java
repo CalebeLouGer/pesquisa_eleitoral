@@ -6,6 +6,16 @@ import java.time.LocalDate;
 
 public record DadosCadastroPesquisa(
         @NotNull
-        LocalDate data
+        Long municipioId,
+
+        @NotNull
+        Long estadoId,
+
+        @NotNull
+        Long candidatoId,
+
+        @NotNull
+        Integer quantidadeDeVotos
+
 ) {
 }

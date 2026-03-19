@@ -1,11 +1,12 @@
 package br.com.api.estimavoto.domain.pesquisa;
 
-import br.com.api.estimavoto.domain.pesquisa.resultado.Resultado;
+import br.com.api.estimavoto.domain.candidato.Candidato;
+import br.com.api.estimavoto.domain.estado.Estado;
+import br.com.api.estimavoto.domain.municipio.Municipio;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Table(name = "pesquisas")
 @Entity(name = "Pesquisa")
@@ -20,10 +21,26 @@ public class Pesquisa {
     private Long id;
     private LocalDate data;
 
-    @OneToMany(mappedBy = "pesquisa")
-    private List<Resultado> resultados;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "municipio_id", nullable = false)
+    private Municipio municipio;
 
-    public Pesquisa(DadosCadastroPesquisa dados) {
-        this.data = dados.data();
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "estado_id", nullable = false)
+    private Estado estado;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "candidato_id", nullable = false)
+    private Candidato candidato;
+
+    @Column(name = "quantidade_voto", nullable = false)
+    private Integer quantidadeDeVotos;
+
+    public Pesquisa(DadosCadastroPesquisa dados, Municipio municipio, Estado estado, Candidato candidato){
+        this.data = LocalDate.now();
+        this.municipio = municipio;
+        this.estado = estado;
+        this.candidato = candidato;
+        this.quantidadeDeVotos = dados.quantidadeDeVotos();
     }
 }

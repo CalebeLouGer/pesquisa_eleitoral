@@ -1,7 +1,9 @@
 package br.com.api.estimavoto.controller;
 
+import br.com.api.estimavoto.domain.candidato.CandidatoRepository;
+import br.com.api.estimavoto.domain.estado.EstadoRepository;
+import br.com.api.estimavoto.domain.municipio.MunicipioRepository;
 import br.com.api.estimavoto.domain.pesquisa.*;
-import br.com.api.estimavoto.domain.pesquisa.resultado.ResultadoRepository;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,14 @@ public class PesquisaController {
     private PesquisaRepository pesquisaRepository;
 
     @Autowired
-    private ResultadoRepository resultadoRepository;
+    private MunicipioRepository municipioRepository;
+
+    @Autowired
+    private CandidatoRepository candidatoRepository;
+
+    @Autowired
+    private EstadoRepository estadoRepository;
+
 
     @GetMapping
     public ResponseEntity<Page<DadosListagemPesquisa>> listar(@PageableDefault(sort = {"id"}, size = 10) Pageable pageable){
@@ -32,8 +41,12 @@ public class PesquisaController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<DadosDetalhamentoPesquisa> cadastrar(@RequestBody @Valid DadosCadastroPesquisa dados, UriComponentsBuilder uriBuilder) {
-        var pesquisa = new Pesquisa(dados);
+    public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroPesquisa dados, UriComponentsBuilder uriBuilder) {
+        var municipio = municipioRepository.getReferenceById(dados.municipioId());
+        var estado = estadoRepository.getReferenceById(dados.estadoId());
+        var candidato = candidatoRepository.getReferenceById(dados.candidatoId());
+
+        var pesquisa = new Pesquisa(dados, municipio, estado, candidato);
         pesquisaRepository.save(pesquisa);
         var pesquisaDetalhada = pesquisaRepository.buscarDetalhado(pesquisa.getId()).get();
 
